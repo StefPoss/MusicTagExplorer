@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MusicTag Explorer</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.2/color-thief.umd.js" defer></script>
+    <script src="js/app.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>MusicTag Explorer</h1>
+    </header>
+
+    <main class="container">
+        <form id="search-form">
+            <input type="text" id="artist-name" placeholder="Rechercher un artiste" required>
+            <button type="submit">Rechercher</button>
+        </form>
+
+        <section id="artist-info" class="grid-container"></section>
+    </main>
+
+    <footer>
+        <p>Développé pour le fun 🚀</p>
+    </footer>
+
+    <!-- Template pour les cartes d'artistes -->
+    <template id="artist-template">
+        <div class="artist-card">
+            <img src="./assets/images/default.jpg" alt="Cover" class="artist-cover">
+            <a href="#" target="_blank" class="artist-name"></a>
+            <p class="artist-followers"></p>            
+            <div class="artist-genres"></div>
+            <div class="artist-tracks"></div>
+        </div>
+    </template>
+</body>
+</html>

@@ -1,0 +1,195 @@
+/* Importation des polices */ 
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Canva+Sans&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+/* Styles globaux */
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    color: #333;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Grille des artistes */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.artist-card {
+    background-color: rgba(0, 0, 0, 0.6);  /* Fond délavé avec opacité (ajustable) */
+    color: #eee; /* Texte plus clair */
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    overflow: hidden;
+    position: relative;
+    filter: brightness(0.90) contrast(1);
+}
+
+.artist-card:hover {
+    filter: brightness(1) contrast(1.1);
+}
+
+/* .artist-genres : gestion de l'alignement des tags */
+.artist-genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;  /* Set a gap between tags */
+    justify-content: center;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    position: relative;
+    width: 100%;
+}
+
+/* .tag : gestion des tags individuels */
+.tag {
+    position: relative;
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border: 1px solid transparent;
+    color: inherit;
+    transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
+    display: inline-block;
+    z-index: 1;
+    text-align: center;
+}
+
+/* Gestion du survol du tag avec inversion des couleurs */
+.artist-genres .tag:hover {
+    background-color: #333;  /* Fond sombre */
+    color: #fff;  /* Texte clair */
+}
+
+/* Sur fond sombre avec texte clair, inversion des couleurs */
+.artist-genres .tag:hover {
+    background-color: #fff;  /* Fond clair */
+    color: #333;  /* Texte sombre */
+}
+
+/* Créer un fond inversé au survol en fonction de l'arrière-plan */
+.artist-genres .tag:hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: inherit;  /* Fond inverse */
+    z-index: -1;
+    opacity: 0.8;
+}
+
+/* Séparateur ~ entre chaque tag */
+.artist-genres .tag::after {
+    content: '~';
+    position: absolute;
+    top: 50%;  /* Centrer verticalement */
+    left: 100%;  /* Placer à droite du tag */
+    color: inherit;
+    font-size: 1rem;
+    opacity: 0.5;
+    transform: translateX(10px) translateY(-50%);  /* Ajuster le séparateur */
+}
+
+/* Ne pas afficher le ~ après le dernier tag */
+.artist-genres .tag:last-child::after {
+    content: '';  /* Supprimer le "~" pour le dernier tag */
+}
+
+.artist-name {
+    font-family: 'Canva Sans', sans-serif;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 10px 0 5px 0;
+    color: inherit;
+    text-decoration: none;
+}
+
+.artist-cover {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.artist-followers {
+    margin: 0;
+    font-size: 0.9rem;
+    font-style: italic;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ccc;
+    width: 100%; /* Le trait prend toute la largeur */
+    color: inherit;
+}
+
+.artist-tracks {
+    background-color: inherit;
+    padding: 10px;
+    width: 90%;
+    border-radius: 8px;
+    text-align: left;
+}
+
+/* Track Link Style */
+.track-link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    margin: 5px 0;
+    transition: transform 0.3s ease;
+    padding-left: 5px;  /* Ensure alignment to the left */
+}
+
+/* Icon before track */
+.track-link i {
+    margin-right: 5px;
+    font-size: 1.1rem;
+}
+
+/* Ajouter une icône audio devant chaque titre de chanson avec Material Icons */
+.track-link::before {
+    content: "play_arrow";  /* Icône de lecture de Google Material Icons */
+    font-family: 'Material Icons'; /* Assure-toi d'utiliser la bonne police d'icônes */
+    margin-right: 8px;   /* Espacement entre l'icône et le titre */
+    font-size: 1.5rem;  /* Taille de l'icône */
+    vertical-align: middle;  /* Aligne l'icône au centre du texte */
+}
+
+.track-link:hover {
+    transform: scale(1.05);  /* Augmente légèrement la taille du texte au survol */
+}
+
+/* Responsive */
+@media (min-width: 1400px) {
+    .artist-card {
+        max-width: 300px;
+    }
+}
+
+footer {
+    background-color: #6c757d;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    position: relative;
+    width: 100%;
+}
